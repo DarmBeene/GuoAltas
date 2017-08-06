@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LocalEntertainBlackList" representedClassName="LocalEntertainBlackList" syncable="YES" codeGenerationType="class">
+        <attribute name="entertainmentKey" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocalEntertainBlackListMessage" inverseName="father" inverseEntity="LocalEntertainBlackListMessage" syncable="YES"/>
+    </entity>
+    <entity name="LocalEntertainBlackListMessage" representedClassName="LocalEntertainBlackListMessage" syncable="YES" codeGenerationType="class">
+        <attribute name="entertainmentKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageKey" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="father" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocalEntertainBlackList" inverseName="messages" inverseEntity="LocalEntertainBlackList" syncable="YES"/>
+    </entity>
+    <entity name="SearchHistory" representedClassName="SearchHistory" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="LocalEntertainBlackList" positionX="-207" positionY="-18" width="153" height="73"/>
+        <element name="SearchHistory" positionX="-108" positionY="-153" width="128" height="75"/>
+        <element name="LocalEntertainBlackListMessage" positionX="25" positionY="-0" width="191" height="88"/>
+    </elements>
+</model>
