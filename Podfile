@@ -12,6 +12,7 @@ pod 'Firebase/Storage'
 pod 'Firebase/Auth'
 pod 'Google/SignIn'
 pod 'Firebase/AdMob'
+pod 'Firebase/Messaging'
 
 pod 'FacebookCore'
 pod 'FacebookLogin'

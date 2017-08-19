@@ -203,6 +203,8 @@ class MainCourseController: UICollectionViewController, UICollectionViewDelegate
                             let course = Course(snapshot: item as! FIRDataSnapshot)
                             loadedCourses.insert(course, at: 0)
                         }
+//                        let loadedCourses = snapshot.children.map { Course(snapshot: $0 as! FIRDataSnapshot) }
+                        
                         if loadedCourses.count == 1 {
                             self.isEnd = true
                             view.alpha = 0

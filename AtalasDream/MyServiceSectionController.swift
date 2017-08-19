@@ -54,8 +54,14 @@ class MyServiceSectionController: ViewServiceSectionController {
             if let value = snapshot.value as? [String: String] {
                 self.infoView.alpha = 0
                 self.indicator.stopAnimating()
+                
                 for (serviceKey, location) in value {
-                    let ref = FIRDatabase.database().reference(withPath: serviceName).child(location).child(serviceKey)
+                    var ref: FIRDatabaseReference
+                    if serviceName == ServiceName.HoldActivity {
+                        ref = FIRDatabase.database().reference(withPath: serviceName).child(serviceKey)
+                    }else{
+                        ref = FIRDatabase.database().reference(withPath: serviceName).child(location).child(serviceKey)
+                    }
                     ref.observeSingleEvent(of: .value, with: { (snap) in
                         let service = Service(snapshot: snap)
                         self.sectionItems.insert(service, at: 0)

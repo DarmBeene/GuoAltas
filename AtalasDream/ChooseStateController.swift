@@ -29,6 +29,7 @@ class ChooseStateController: UITableViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelButton)
+        navigationItem.title = "选择州"
     }
     
     func handleDismiss() {
@@ -62,10 +63,6 @@ class ChooseStateController: UITableViewController {
         dismiss(animated: true, completion: nil)
         
     }
-    
-    
-    
-    
     
     
 }

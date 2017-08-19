@@ -86,16 +86,12 @@ class PublishServiceController: UIViewController {
         serviceTitle = publishView.titleTextField.text
         serviceContent = publishView.textView.text
         uid = FIRAuth.auth()?.currentUser?.uid
-        location = DeviceLocation.shared.state
         
         if uid == nil || uid == "" {
             self.showAlertPrompt(message: "请先登录以体验更多功能")
             return
         }
-        if location == nil {
-            self.showAlertPrompt(message: "请先选择所在州")
-            return
-        }
+        
         if serviceTitle == nil || serviceTitle == "" {
             self.showAlertPrompt(message: "请填写标题")
             return
@@ -111,29 +107,37 @@ class PublishServiceController: UIViewController {
     }
     
     func handlePublish() {
+        guard let serviceName = serviceName else { return }
         self.view.endEditing(true)
+        publishButton.isEnabled = false
         initData()
         
+        var ref: FIRDatabaseReference
+        if serviceName == ServiceName.HoldActivity {
+            ref = FIRDatabase.database().reference(withPath: serviceName)
+        }else{
+            ref = FIRDatabase.database().reference(withPath: serviceName).child(location!)
+        }
+        
         let service = Service(title: serviceTitle, content: serviceContent, date: date, uid: uid, location: location)
-        if let serviceName = serviceName {
-            publishButton.isEnabled = false
-            FIRDatabase.database().reference(withPath: serviceName).child(location!).childByAutoId().setValue(service.toAny(), withCompletionBlock: { (error, reference) in
-                if let error = error {
-                    self.showAlertPrompt(message: error.localizedDescription)
+        
+        ref.childByAutoId().setValue(service.toAny(), withCompletionBlock: { (error, reference) in
+            if let error = error {
+                self.showAlertPrompt(message: error.localizedDescription)
+                return
+            }
+            let keyValue = self.location ?? "1"
+            let values = [reference.key: keyValue]
+            FirDatabasePath.UserReference.child(self.uid!).child(serviceName).updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if let err = err {
+                    self.showAlertPrompt(message: err.localizedDescription)
                     return
                 }
-                let values = [reference.key: self.location!]
-                FirDatabasePath.UserReference.child(self.uid!).child(serviceName).updateChildValues(values, withCompletionBlock: { (err, ref) in
-                    if let err = err {
-                        self.showAlertPrompt(message: err.localizedDescription)
-                        return
-                    }
-                    self.view.prompt(message: "发布成功!", completion: { () in
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                self.view.prompt(message: "发布成功!", completion: { () in
+                    self.dismiss(animated: true, completion: nil)
                 })
             })
-        }
+        })
     }
     
     func handleDismiss() {

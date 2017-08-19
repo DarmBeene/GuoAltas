@@ -10,12 +10,12 @@ import Foundation
 
 class Service: NSObject {
     
-    var title: String?
-    var content: String?
-    var date: String?
+    var title: String? // 标题
+    var content: String? //内容
+    var date: String? //发布时间
     var uid: String?
     var serviceKey: String?
-    var location: String?
+    var location: String? // 发布信息所属地点，可以为空。发布的活动信息地址为空
     
     init(title: String?, content: String?, date: String?, uid: String?, location: String?) {
         self.title = title

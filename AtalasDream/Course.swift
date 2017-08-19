@@ -5,19 +5,17 @@
 //  Created by GuoGongbin on 5/19/17.
 //  Copyright © 2017 GuoGongbin. All rights reserved.
 //
-
 import Foundation
 
 class Course: NSObject {
-    
-    var university: String?
-    var department: String?
-    var name: String?
-    var link: String?
-    var courseDescription: String?
-    var courseKey: String?
-    var uid: String? // FIRAuth.auth()?.currentUser?.uid
-    var date: String?
+    var university: String? //学校信息
+    var department: String? // 学院信息
+    var name: String? // 课程名称, 课程名称全部小写
+    var link: String? // 分享链接
+    var courseDescription: String? // 对课程的描述
+    var courseKey: String? // 这个courseKey对应firebase上的key，获取courseKey的代码 self.courseKey = snapshot.key
+    var uid: String? // FIRAuth.auth()?.currentUser?.uid，分享者的user id
+    var date: String? //分享的时间
     
     init(university: String?, department: String?, name: String?, link: String?, courseDescription: String?, uid: String?, date: String?) {
         self.university = university
@@ -43,7 +41,6 @@ class Course: NSObject {
     }
     
     func toAny() -> Any {
-        
         return [
             "university": university,
             "department": department,
@@ -54,5 +51,4 @@ class Course: NSObject {
             "date": date
         ]
     }
-    
 }

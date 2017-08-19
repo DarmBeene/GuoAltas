@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import FacebookLogin
 import FacebookCore
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,6 +51,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tbc
         
         FIRApp.configure()
+        
+        //notification
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        
+        
         GADMobileAds.configure(withApplicationID: AdMobConstants.AppID)
         
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
@@ -139,5 +159,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
 }
 

@@ -55,17 +55,17 @@ class ViewServiceSectionController: UICollectionViewController, UICollectionView
     
     func setupNaviBarTitle() {
         if let serviceName = serviceName {
-            if serviceName == ServiceName.SecondHand {
+            switch serviceName {
+            case ServiceName.SecondHand:
                 navigationItem.title = "二手信息"
-            }
-            if serviceName == ServiceName.RentHouse {
+            case ServiceName.RentHouse:
                 navigationItem.title = "房屋信息"
-            }
-            if serviceName == ServiceName.HoldActivity {
+            case ServiceName.HoldActivity:
                 navigationItem.title = "活动信息"
-            }
-            if serviceName == ServiceName.PartTimeJob {
+            case ServiceName.PartTimeJob:
                 navigationItem.title = "兼职信息"
+            default:
+                navigationItem.title = ""
             }
         }
     }
@@ -86,30 +86,38 @@ class ViewServiceSectionController: UICollectionViewController, UICollectionView
     }
     
     func loadServices() {
-        guard let location = DeviceLocation.shared.state else {
+        guard let serviceName = serviceName else { return }
+        if serviceName != ServiceName.HoldActivity && DeviceLocation.shared.state == nil {
             self.showAlertPrompt(message: "请先选择所在州")
             return
         }
+        
         indicator.startAnimating()
         sectionItems.removeAll(keepingCapacity: false)
-
-        if let serviceName = serviceName {
-            FIRDatabase.database().reference(withPath: serviceName).child(location).observeSingleEvent(of: .value, with: { (snapshot) in
-                if snapshot.hasChildren() {
-                    let loadedServices = snapshot.children.map { Service(snapshot: $0 as! FIRDataSnapshot) }
-                    self.sectionItems = Array(loadedServices.reversed())
-                    self.infoView.alpha = 0
-                    self.indicator.stopAnimating()
-                    DispatchQueue.main.async {
-                        self.collectionView?.reloadData()
-                    }
-                }else{
-                    self.infoView.alpha = 1
-                    self.collectionView?.reloadData()
-                    self.indicator.stopAnimating()
-                }
-            })
+        
+        var ref: FIRDatabaseReference
+        if serviceName == ServiceName.HoldActivity {
+            ref = FIRDatabase.database().reference(withPath: serviceName)
+        }else{
+            let location = DeviceLocation.shared.state
+            ref = FIRDatabase.database().reference(withPath: serviceName).child(location!)
         }
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChildren() {
+                let loadedServices = snapshot.children.map { Service(snapshot: $0 as! FIRDataSnapshot) }
+                self.sectionItems = Array(loadedServices.reversed())
+                self.infoView.alpha = 0
+                self.indicator.stopAnimating()
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+            }else{
+                self.infoView.alpha = 1
+                self.collectionView?.reloadData()
+                self.indicator.stopAnimating()
+            }
+        })
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

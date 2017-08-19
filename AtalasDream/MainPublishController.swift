@@ -54,10 +54,19 @@ class MainPublishController: UICollectionViewController, UICollectionViewDelegat
         if indexPath.item == 3 {
             serviceName = ServiceName.PartTimeJob
         }
-        let publishController = PublishServiceController()
-        publishController.serviceName = serviceName
         
-        navigationController?.pushViewController(publishController, animated: true)
+        switch indexPath.item {
+        case 0, 1, 3:
+            let chooseServiceState = ChooseServiceStateController()
+            chooseServiceState.serviceName = serviceName
+            navigationController?.pushViewController(chooseServiceState, animated: true)
+        case 2:
+            let publishController = PublishServiceController()
+            publishController.serviceName = serviceName
+            navigationController?.pushViewController(publishController, animated: true)
+        default:
+            break
+        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

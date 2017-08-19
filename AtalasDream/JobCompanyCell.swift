@@ -24,6 +24,9 @@ class JobCompanyCell: BaseCollectionViewCell {
             if let phone = job?.phoneNumber {
                 phoneLabel.text = phone
             }
+            if let location = job?.location {
+                locationLabel.text = location
+            }
         }
     }
     let company: UILabel = {
@@ -65,6 +68,20 @@ class JobCompanyCell: BaseCollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    let location: UILabel = {
+        let label = UILabel()
+        label.text = "地址："
+        label.font = UIFont.systemFont(ofSize: JobConstant.LabelFontSize)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    let locationLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: JobConstant.LabelFontSize)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func setupViews() {
         backgroundColor = .white
         
@@ -103,6 +120,18 @@ class JobCompanyCell: BaseCollectionViewCell {
         phoneLabel.rightAnchor.constraint(equalTo: companyNameLabel.rightAnchor).isActive = true
         phoneLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 5).isActive = true
         phoneLabel.heightAnchor.constraint(equalToConstant: labelHeight).isActive = true
+        
+        addSubview(location)
+        location.leftAnchor.constraint(equalTo: company.leftAnchor).isActive = true
+        location.topAnchor.constraint(equalTo: phone.bottomAnchor, constant: 5).isActive = true
+        location.widthAnchor.constraint(equalToConstant: nameLabelWidth).isActive = true
+        location.heightAnchor.constraint(equalToConstant: labelHeight).isActive = true
+        
+        addSubview(locationLabel)
+        locationLabel.leftAnchor.constraint(equalTo: companyNameLabel.leftAnchor).isActive = true
+        locationLabel.rightAnchor.constraint(equalTo: companyNameLabel.rightAnchor).isActive = true
+        locationLabel.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 5).isActive = true
+        locationLabel.heightAnchor.constraint(equalToConstant: labelHeight).isActive = true
     }
     
 }

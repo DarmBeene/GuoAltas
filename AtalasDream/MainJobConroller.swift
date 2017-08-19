@@ -120,7 +120,7 @@ class MainJobController: UICollectionViewController, UICollectionViewDelegateFlo
         let job = jobs[indexPath.item]
         let showJobController = ShowJobController(collectionViewLayout: UICollectionViewFlowLayout())
         showJobController.job = job
-//        showJobController.hidesBottomBarWhenPushed = true
+        showJobController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(showJobController, animated: true)
         
     }

@@ -12,6 +12,7 @@
 		57C8ACAF1ECD8B65006076C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C8ACAE1ECD8B65006076C9 /* AppDelegate.swift */; };
 		57C8ACB41ECD8B65006076C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C8ACB21ECD8B65006076C9 /* Main.storyboard */; };
 		57C8ACB91ECD8B65006076C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C8ACB71ECD8B65006076C9 /* LaunchScreen.storyboard */; };
+		651504B31F44737D00A0A61A /* ChooseServiceStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651504B21F44737D00A0A61A /* ChooseServiceStateController.swift */; };
 		652357C11F2E23DA001114CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652357C01F2E23DA001114CD /* Assets.xcassets */; };
 		652357C41F2E8546001114CD /* MainEntertainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652357C31F2E8546001114CD /* MainEntertainController.swift */; };
 		652357C91F2E8F71001114CD /* ChooseTownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652357C81F2E8F71001114CD /* ChooseTownController.swift */; };
@@ -139,6 +140,7 @@
 		57C8ACB81ECD8B65006076C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57C8ACBA1ECD8B65006076C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BF1C90854F5FC90A9720291 /* Pods-AtalasDream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtalasDream.release.xcconfig"; path = "Pods/Target Support Files/Pods-AtalasDream/Pods-AtalasDream.release.xcconfig"; sourceTree = "<group>"; };
+		651504B21F44737D00A0A61A /* ChooseServiceStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseServiceStateController.swift; sourceTree = "<group>"; };
 		652357C01F2E23DA001114CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		652357C31F2E8546001114CD /* MainEntertainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainEntertainController.swift; sourceTree = "<group>"; };
 		652357C81F2E8F71001114CD /* ChooseTownController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTownController.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				65A55F781F2E1ECB00B8E46B /* MainPublishController.swift */,
 				65A55F791F2E1ECB00B8E46B /* PublishServiceController.swift */,
 				65A55F7A1F2E1ECB00B8E46B /* ChooseStateController.swift */,
+				651504B21F44737D00A0A61A /* ChooseServiceStateController.swift */,
 			);
 			name = ServiceController;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				65A55F891F2E1F0200B8E46B /* UserDetailCell.swift in Sources */,
 				65A55F291F2E1E0D00B8E46B /* FooterCell.swift in Sources */,
 				65E98BF71F2F38EC00C4891F /* ShowMyEntertainController.swift in Sources */,
+				651504B31F44737D00A0A61A /* ChooseServiceStateController.swift in Sources */,
 				65A55F201F2E1DFC00B8E46B /* SafariActivity.swift in Sources */,
 				65EFB1341F307C5900E7F4EB /* BasicCommentToolView.swift in Sources */,
 				65A55FC41F2E1F7600B8E46B /* CustomTextField.swift in Sources */,

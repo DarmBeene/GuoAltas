@@ -29,18 +29,23 @@ class ShowMyItemController: BaseServiceItemController {
     func handleDelete() {
         
         guard let service = service,
-            let location = service.location,
             let uid = FIRAuth.auth()?.currentUser?.uid,
             let serviceName = serviceName,
             let serviceKey = service.serviceKey else {
                 self.showAlertPrompt(message: "数据出现异常，请稍后再试")
                 return
         }
+        
         let alert = UIAlertController(title: nil, message: "确定要删除吗？", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "确定", style: .default) { (action) in
             FirDatabasePath.UserReference.child(uid).child(serviceName).child(serviceKey).removeValue()
-            FIRDatabase.database().reference(withPath: serviceName).child(location).child(serviceKey).removeValue()
-            
+            if serviceName == ServiceName.HoldActivity {
+                FIRDatabase.database().reference(withPath: serviceName).child(serviceKey).removeValue()
+            }else{
+                if let location = service.location {
+                    FIRDatabase.database().reference(withPath: serviceName).child(location).child(serviceKey).removeValue()
+                }
+            }
             DispatchQueue.main.async {
                 let userInfo = [SettingsConstants.IndexPathIdentifier: self.indexPath!]
                 NotificationCenter.default.post(name: Notification.Name(NotificationNameConstants.ReloadMyPublishedService), object: self, userInfo: userInfo)

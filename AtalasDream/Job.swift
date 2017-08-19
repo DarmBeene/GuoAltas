@@ -5,22 +5,21 @@
 //  Created by GuoGongbin on 6/23/17.
 //  Copyright © 2017 GuoGongbin. All rights reserved.
 //
-//title，工作内容，任职要求，工作地点，合同期限，邮箱，电话
 import Foundation
 
 class Job: NSObject {
     
-    var title: String?
-    var company: String?
-    var email: String?
+    var title: String? //招聘信息名称
+    var company: String? //公司名称
+    var email: String? // email 地址
     var phoneNumber: String?
-    var location: String?
-    var companyDescription: String?
-    var positionDescription: String?
-    var requirement: String?
-    var uid: String? //FIRAuth.auth()?.currentUser?.uid
-    var date: String?
-    var jobKey: String?
+    var location: String? //工作地点
+    var companyDescription: String? // g公司描述
+    var positionDescription: String? //职位描述
+    var requirement: String? // 任职要求
+    var uid: String? //FIRAuth.auth()?.currentUser?.uid，发布者的user id
+    var date: String? //发布的时间
+    var jobKey: String? //  这个jobKey对应firebase上的key，获取jobKey的代码 self.jobKey = snapshot.key
  
     init(title: String?, company: String?, email: String?, phoneNumber: String?, location: String?, companyDescription: String?, positionDescription: String?, requirement: String?, uid: String?, date: String?) {
         self.title = title

@@ -66,10 +66,6 @@ class MainServiceController: UICollectionViewController, UICollectionViewDelegat
         self.present(chooseController, animated: true, completion: nil)
     }
     func handlePublish() {
-        if DeviceLocation.shared.state == nil {
-            self.showAlertPrompt(message: "请先选择所在州")
-            return
-        }
         if FIRAuth.auth()?.currentUser?.uid == nil {
             self.showAlertPrompt(message: "请先登录以体验更多功能")
             return
@@ -80,10 +76,6 @@ class MainServiceController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if DeviceLocation.shared.state == nil {
-            self.showAlertPrompt(message: "请先选择所在州")
-            return
-        }
         var serviceName = ""
         if indexPath.item == 0 {
             serviceName = ServiceName.SecondHand
@@ -97,9 +89,15 @@ class MainServiceController: UICollectionViewController, UICollectionViewDelegat
         if indexPath.item == 3 {
             serviceName = ServiceName.PartTimeJob
         }
+        
+        if serviceName != ServiceName.HoldActivity && DeviceLocation.shared.state == nil {
+            self.showAlertPrompt(message: "请先选择所在州")
+            return
+        }
+        
         let viewService = ViewServiceSectionController(collectionViewLayout: UICollectionViewFlowLayout())
         viewService.serviceName = serviceName
-//        viewService.hidesBottomBarWhenPushed = true
+        viewService.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewService, animated: true)
     }
     

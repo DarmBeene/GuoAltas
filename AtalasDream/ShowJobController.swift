@@ -85,7 +85,7 @@ class ShowJobController: UICollectionViewController, UICollectionViewDelegateFlo
         case 0:
             size.height = 65
         case 1:
-            size.height = 90
+            size.height = 115
         case 2:
             if let companyDescription = job?.companyDescription {
                 size.height += estimatedHeight(forText: companyDescription)

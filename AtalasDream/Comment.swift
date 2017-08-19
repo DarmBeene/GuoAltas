@@ -9,10 +9,10 @@
 import Foundation
 
 class Comment: NSObject {
-    var content: String?
-    var date: String?
-    var commentKey: String?
-    var uid: String?
+    var content: String? //评论内容
+    var date: String? //评论时间
+    var commentKey: String? // 这个commentKey对应firebase上的key，获取commentKey的代码 self.commentKey = snapshot.key
+    var uid: String? // FIRAuth.auth()?.currentUser?.uid，分享者的user id
     
     init(content: String?, date: String?, uid: String?) {
         self.content = content
