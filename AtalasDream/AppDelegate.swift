@@ -43,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainSettingsController.tabBarItem.title = "我"
         mainSettingsController.tabBarItem.image = UIImage(named: "user_icon")?.withRenderingMode(.alwaysOriginal)
         
-        
         let tbc = UITabBarController()
         tbc.viewControllers = [mainStudyController, mainJobController, mainServiceController, mainEntertainController, mainSettingsController]
         tbc.tabBar.isTranslucent = false
@@ -91,6 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(111, userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -164,4 +167,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
 }
+
+
+
+
+
+
 

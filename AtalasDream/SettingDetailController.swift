@@ -12,7 +12,7 @@ private let SettingDetailCellID = "SettingDetailCellID"
 
 class SettingDetailController: BaseTableController {
 
-    var cellNames = [["退出我的账号", "反馈意见", "举报内容", "关于"]]
+    var cellNames = [["退出我的账号", "反馈意见", "举报内容", "推送消息设置", "关于"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +69,12 @@ class SettingDetailController: BaseTableController {
             self.present(vc, animated: true, completion: nil)
         }
         if indexPath.row == 3 {
+//            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NotificationController")
+            let vc = NotificationController(style: .grouped)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        if indexPath.row == 4 {
             let vc = GeneralController()
             navigationController?.pushViewController(vc, animated: true)
         }

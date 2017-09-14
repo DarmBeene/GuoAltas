@@ -126,6 +126,7 @@
 		65EFB1381F30A19C00E7F4EB /* CommentToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFB1371F30A19C00E7F4EB /* CommentToolView.swift */; };
 		65EFB13A1F30A77E00E7F4EB /* EntertainCommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFB1391F30A77E00E7F4EB /* EntertainCommentsController.swift */; };
 		65EFB15C1F315B4800E7F4EB /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFB15B1F315B4800E7F4EB /* ActionView.swift */; };
+		65F2E2621F48CDEE0061AC2B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2E2611F48CDEE0061AC2B /* NotificationController.swift */; };
 		DEE5B131D8572067F35BE47D /* Pods_AtalasDream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDDD30339DE428097A731368 /* Pods_AtalasDream.framework */; };
 /* End PBXBuildFile section */
 
@@ -254,6 +255,7 @@
 		65EFB1371F30A19C00E7F4EB /* CommentToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentToolView.swift; sourceTree = "<group>"; };
 		65EFB1391F30A77E00E7F4EB /* EntertainCommentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntertainCommentsController.swift; sourceTree = "<group>"; };
 		65EFB15B1F315B4800E7F4EB /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		65F2E2611F48CDEE0061AC2B /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		67ABBB5AC5CB9F8310532A9D /* Pods-AtalasDream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtalasDream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AtalasDream/Pods-AtalasDream.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDD30339DE428097A731368 /* Pods_AtalasDream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AtalasDream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -522,6 +524,7 @@
 				65A55FB01F2E1F4D00B8E46B /* MyFavoritesController.swift */,
 				65A55FB11F2E1F4D00B8E46B /* ShowMyFavTipItemController.swift */,
 				65A55FB21F2E1F4D00B8E46B /* FeedbackController.swift */,
+				65F2E2611F48CDEE0061AC2B /* NotificationController.swift */,
 			);
 			name = AppSettings;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				65A55F8C1F2E1F0200B8E46B /* SettingsCell.swift in Sources */,
 				65A55F5D1F2E1E7D00B8E46B /* JobDetailCell.swift in Sources */,
 				65A55F331F2E1E1E00B8E46B /* ChooseShareTypeController.swift in Sources */,
+				65F2E2621F48CDEE0061AC2B /* NotificationController.swift in Sources */,
 				65A55FA11F2E1F3D00B8E46B /* BaseLoginRegister.swift in Sources */,
 				572E43E31EE0BD49009601FB /* Model.xcdatamodeld in Sources */,
 				652357C91F2E8F71001114CD /* ChooseTownController.swift in Sources */,
